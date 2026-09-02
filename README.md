@@ -25,3 +25,14 @@ uvicorn main:app --reload
 Open `frontend/index.html` directly in your browser (no server needed — it's a plain HTML file that connects via WebSocket to the backend running on `localhost:8000`).
 
 ## Project Structure
+anomaly-dashboard/
+├── backend/
+│ ├── main.py # WebSocket server
+│ ├── model.py # Isolation Forest + data simulator
+│ └── requirements.txt
+└── frontend/
+└── index.html # Canvas chart + WebSocket client
+
+
+## Why This Design
+This project demonstrates real-time, bidirectional communication (WebSockets) rather than typical request-response APIs — the server continuously pushes new predictions without the client needing to ask, and the client can send sensitivity updates back at any time without breaking the connection.
